@@ -12,7 +12,7 @@ confirmed_cases = pd.read_csv(CONFIRMED_CASES_URL, error_bad_lines=False)
 
 def poland_cases_by_date(day, month, year: int = 2020) -> int:
   d = datetime.date(year,month,day)
-  data = d.strftime('%m/%d/%y').lstrip("0").replace(" 0", " ").replace("/0","/")
+  d1 = d.strftime('%m/%d/%y').lstrip("0").replace(" 0", " ").replace("/0","/")
   polska = confirmed_cases.loc[confirmed_cases["Country/Region"]=="Poland"]
   result = polska[d1].values[0]
   return result
