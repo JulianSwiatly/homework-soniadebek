@@ -24,4 +24,4 @@ def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
   d2 = d.strftime('%m/%d/%y').lstrip("0").replace(" 0", " ").replace("/0","/")
   wczoraj = d - datetime.timedelta(days=1)
   wczoraj_str = wczoraj.strftime('%m/%d/%y').lstrip("0").replace(" 0"," ").replace("/0","/")
-  return len(confirmed_cases.loc[confirmed_cases[d2] - confirmed_cases[wczoraj_str]!=0].index
+  return len(confirmed_cases.loc[confirmed_cases[d2] - confirmed_cases[wczoraj_str]!=0].index)
