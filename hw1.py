@@ -1,4 +1,5 @@
 from typing import List
+import datetime
 
 import pandas as pd
 
@@ -10,8 +11,11 @@ confirmed_cases = pd.read_csv(CONFIRMED_CASES_URL, error_bad_lines=False)
 
 
 def poland_cases_by_date(day, month, year: int = 2020) -> int:
-  y = year % 100
-  return confirmed_cases.loc[confirmed_cases["Country/Region"]=="Poland"][f'{month}/{day}/{y}'].values[0]
+  d = datetime.date(year,month,day)
+  data = d.strftime('%m/%d/%y').lstrip("0").replace(" 0", " ").replace("/0","/")
+  polska = confirmed_cases.loc[confirmed_cases["Country/Region"]=="Poland"]
+  result = polska[d1].values[0]
+  return result
 
 def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
   d = datetime.date(year, month, day)
