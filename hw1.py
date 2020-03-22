@@ -26,9 +26,7 @@ def poland_cases_by_date(day: int, month: int, year: int = 2020) -> int:
     :param day: Day of month to get the cases for as an integer indexed from 1
     :param month: Month to get the cases for as an integer indexed from 1
     :return: Number of cases on a given date as an integer
-    """
-    
-    # Your code goes here (remove pass)
+    """ 
 data = datetime.date(year,month,day)
 data1 = data.strftime('%m/%d/%y').lstrip("0").replace(" 0", " ").replace("/0", "/")
 polska = confirmed_cases.loc[confirmed_cases["Country/Region"]=="Poland"]
@@ -52,8 +50,6 @@ def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
     :param year: Month to get the countries for as an integer indexed from 1
     :return: A list of strings with the names of the coutires
     """
-
-    # Your code goes here (remove pass)
   data = datetime.date(year,month,day)
   data1 = data.strftime('%m/%d/%y').lstrip("0").replace(" 0", " ").replace("/0", "/")
   kraje = confirmed_cases[["Country/Region", data1]].groupby(["Country/Region"]).sum().sort_values(by=data1, ascending=False).head(5)
@@ -76,8 +72,7 @@ def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
     :param year: Month to get the countries for as an integer indexed from 1
     :return: Number of countries/regions where the count has not changed in a day
     """
-    
-    # Your code goes here (remove pass)
+
     data = datetime.date(year,month,day)
     data1 = data.strftime('%m/%d/%y').lstrip("0").replace(" 0", " ").replace("/0", "/")
     wczoraj = data - datetime.timedelta(days=1)
